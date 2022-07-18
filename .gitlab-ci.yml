@@ -1,0 +1,31 @@
+stages:
+    - security
+
+bandit:
+    stage: security
+    image: python:latest
+    script:
+        - pip3 install bandit
+        - bandit -r /builds -f json -o bandit.json
+    allow_failure: false
+    artifacts: 
+        when: on_failure
+        paths: 
+            - bandit.json
+    after_script:
+        - cat bandit.json
+
+safety:
+    stage: security
+    image: python:latest
+    script:
+        - pip3 install safety
+        - pip3 install -r requirements.txt
+        - safety check -r requirements.txt --output text > result.txt
+    allow_failure: false
+    artifacts: 
+        when: on_failure
+        paths: 
+            - result.txt
+    after_script:
+        - cat result.txt
