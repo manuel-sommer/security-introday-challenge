@@ -19,6 +19,8 @@ Execute the following to setup Docker and Docker-compose in the ec2:
 - go into the folder and run: docker-compose up --build -d
 - visit the following url in the browser: "http://ip_address_of_ec2:8000"
 
+## Check your code automatically in Gitlabci
+- Clone this repo in your respective gitlab project and push a commit. You will see the results of the scanners "safety" and "bandit" which are failing in this repo. 
 
 
 ====================================================================================================================================================
