@@ -1,3 +1,24 @@
+# This forked repo adds multiple DevOps Tools.
+## Terraform 
+Use this terraform code to setup an EC2 instance in your AWS account. Setup an AWS account profile in your local environment called "securitytest".
+Caution: This is for educational purposes, you are setting here up a vulnerable test environment with a public reachable IP address.
+Steps:
+- terraform init
+- terraform apply
+
+## Ansible
+Use the generated key from terraform (ec2-ssh-key-pem.pem) to execute the Ansible.
+Prerequisites:
+- You need to adapt the second line in the file /terraform/ansible/hosts. This line needs to be the output IP address of the applied Terraform EC2.
+Execute the following to setup Docker and Docker-compose in the ec2:
+- ansible-playbook --private-key=../ec2-ssh-key-pem.pem -i hosts playbook.yml
+
+## Now do the following:
+- ssh into the ec2 instance using the generated key (ssh -i ec2-ssh-key-pem.pem ubuntu@<ip_address_of_ec2>)
+- clone this repo https://github.com/manuel-sommer/security-introday-challenge.git
+- run: docker-compose up --build -d
+
+# Tis is the Documentation of the fork:
 # Security Introday Coding Challenge
 
 ## The challenge
