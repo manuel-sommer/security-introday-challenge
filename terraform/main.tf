@@ -34,12 +34,12 @@ resource "tls_private_key" "key" {
 
 resource "local_file" "foo" {
   content         = tls_private_key.key.private_key_pem
-  filename        = "./ec2-ssh-key.pem"
+  filename        = "./ec2-ssh-key-pem.pem"
   file_permission = "0400"
 }
 
 resource "aws_key_pair" "key" {
-  key_name   = "ec2-ssh-key"
+  key_name   = "ec2-ssh-key-pem"
   public_key = tls_private_key.key.public_key_openssh
 }
 
@@ -53,8 +53,8 @@ resource "aws_security_group" "securitytest" {
   }
 
   ingress {
-    from_port = 8080
-    to_port = 8080
+    from_port = 8000
+    to_port = 8000
     protocol = "tcp"
     cidr_blocks = [ "0.0.0.0/0" ]
   }
