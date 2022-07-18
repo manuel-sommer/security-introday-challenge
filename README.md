@@ -16,9 +16,13 @@ Execute the following to setup Docker and Docker-compose in the ec2:
 ## Now do the following:
 - ssh into the ec2 instance using the generated key (ssh -i ec2-ssh-key-pem.pem ubuntu@<ip_address_of_ec2>)
 - clone this repo https://github.com/manuel-sommer/security-introday-challenge.git
-- run: docker-compose up --build -d
+- go into the folder and run: docker-compose up --build -d
+- visit the following url in the browser: "http://ip_address_of_ec2:8000"
 
-# Tis is the Documentation of the fork:
+
+
+====================================================================================================================================================
+# This is the Documentation of the fork:
 # Security Introday Coding Challenge
 
 ## The challenge
